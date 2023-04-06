@@ -20,8 +20,9 @@ container:{
 backgroundColor:'white',
 width:'100%',
 
-borderColor:'#e8e8e8',
-borderWidth:1,
+borderColor:'black',
+// borderWidth:1,
+borderBottomWidth:1,
 borderRadius:5,
 
 paddingHorizontal:10,

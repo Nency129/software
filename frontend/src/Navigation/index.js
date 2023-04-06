@@ -8,6 +8,7 @@ import ForgotPasswordScreen from '../Screen/ForgotpasswordScreen/ForgotPasswordS
 import NewPasswordScreen from '../Screen/NewPasswordScreen';
 import SignInScreen from '../Screen/signIn/SignInscreen';
 import HomeScreen from '../Screen/HomeScreen';
+import History from '../Screen/History/History';
 
 import Form from '../Screen/HomeScreen/Form';
 import Scanner from '../../Components/Scanner';
@@ -29,6 +30,7 @@ const Navigation = () => {
                 <Stack.Screen name="Scanner" component={Scanner}/>
                 <Stack.Screen name="TimeStamp" component={TimeStamp}/>
                 <Stack.Screen name="Custom" component={CustomButton}/>
+                <Stack.Screen name="History" component={History}/>
 
             </Stack.Navigator>
         </NavigationContainer>

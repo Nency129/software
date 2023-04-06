@@ -3,6 +3,10 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import CustomInput from '../../component/CustomInput/CustomInput'
 import CustomButton from '../../component/CustomButton/CustomButton';
  import { useNavigation } from '@react-navigation/native';
+ import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+  } from 'react-native-responsive-screen';
 
 const ConfirmEmailScreen = () => {
     const [code, setCode] = useState('');
@@ -23,7 +27,9 @@ const ConfirmEmailScreen = () => {
 
     return (
 
-        <View style={styles.root}>
+        <View style={styles.container}>
+        <View style={styles.container1}>
+          <View style={styles.root}>
             <Text style={styles.title}>
                 Confirm your Email
             </Text>
@@ -52,16 +58,38 @@ const ConfirmEmailScreen = () => {
                 type="TERTIARY"
             />
         </View>
+      </View>
+    </View>
 
     );
 };
 
 const styles = StyleSheet.create({
-
     root: {
         alignItems: 'center',
         padding: 20,
-    },
+        marginTop: 100,
+        marginLeft: 30,
+        marginRight: 30,
+        backgroundColor: '#F6F1F1',
+        // borderWidth:2,
+      },
+      // linearGradient:{
+      //   borderRadius:20,
+      // },
+      container: {
+        flex: 1,
+        backgroundColor: '#fff',
+      },
+      container1: {
+        height: hp('35%'),
+        backgroundColor: '#19376D',
+        // marginLeft:hp('10%'),
+        // overflow:'hidden',
+        borderBottomLeftRadius: hp('8%'),
+        borderBottomRightRadius: hp('8%'),
+      },
+    
     title: {
         fontSize: 24,
         fontWeight: 'bold',

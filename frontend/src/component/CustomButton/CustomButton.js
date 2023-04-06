@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
     marginVertical: 5,
 
     alignItems: 'center',
-    borderRadius: 5,
+    borderRadius:25,
   },
 
   container_PRIMARY: {
-    backgroundColor: '#3B71F3',
+    backgroundColor: '#576CBC',
   },
 
   container_SECONDARY: {

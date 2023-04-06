@@ -4,6 +4,11 @@ import CustomInput from '../../component/CustomInput/CustomInput';
 import CustomButton from '../../component/CustomButton/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 
 const SignUpScreen = () => {
   const [username, setUsername] = useState('');
@@ -20,15 +25,14 @@ const SignUpScreen = () => {
   //   }).then(()=>{
   //     console.log("succss");
   //   });
-    // const data = await res.json();
-    // console.log(res.data);
+  // const data = await res.json();
+  // console.log(res.data);
   // }
-  
 
   const SubmitHandler = async e => {
     e.preventDefault();
     // await fetchProdcuts();
-    
+
     const user = {
       username: username,
       email: email,
@@ -47,7 +51,10 @@ const SignUpScreen = () => {
         // if(res.data){
         //   navigation("")
         // }
-        const res = await axios.post('http://192.168.193.234:3000/api/user', user)
+        const res = await axios.post(
+          'http://192.168.193.234:3000/api/user',
+          user,
+        );
         console.log(res.data);
         // localStorage.setItem('signature', res.data.signature);
         // navigate('/');
@@ -81,61 +88,65 @@ const SignUpScreen = () => {
     console.warn('privacy Policy');
   };
   return (
-    <View style={styles.root}>
-      <Text style={styles.title}>Create an account</Text>
+    <View style={styles.container}>
+      <View style={styles.container1}>
+        <View style={styles.root}>
+          <Text style={styles.title}>Create an account</Text>
 
-      <Text style={styles.label}>Username*</Text>
-      <CustomInput
-        placeholder="Username"
-        value={username}
-        setValue={setUsername}
-      />
+          <Text style={styles.label}>Username*</Text>
+          <CustomInput
+            placeholder="Username"
+            value={username}
+            setValue={setUsername}
+          />
 
-      <Text style={styles.emaillabel}>Email*</Text>
-      <CustomInput placeholder="Email" value={email} setValue={setEmail} />
+          <Text style={styles.emaillabel}>Email*</Text>
+          <CustomInput placeholder="Email" value={email} setValue={setEmail} />
 
-      <Text style={styles.label}>Password*</Text>
-      <CustomInput
-        placeholder="Password"
-        value={password}
-        setValue={setPassword}
-        secureTextEntry={true}
-      />
+          <Text style={styles.label}>Password*</Text>
+          <CustomInput
+            placeholder="Password"
+            value={password}
+            setValue={setPassword}
+            secureTextEntry={true}
+          />
 
-      <Text style={styles.confirmpasslabel}>Confirm Password</Text>
-      <CustomInput
-        placeholder=" Confirm Password"
-        value={passwordRepeat}
-        setValue={setPasswordRepeat}
-        secureTextEntry={true}
-      />
+          <Text style={styles.confirmpasslabel}>Confirm Password</Text>
+          <CustomInput
+            placeholder=" Confirm Password"
+            value={passwordRepeat}
+            setValue={setPasswordRepeat}
+            secureTextEntry={true}
+          />
 
-      <CustomButton text="Register" onPress={SubmitHandler} />
+          <CustomButton text="Register" onPress={SubmitHandler} />
 
-      <Text style={styles.text}>
-        By Registering, you confirm that you accept our
-        <Text style={styles.link} onPress={onTermsOfUsePressed}>
-          {' '}
-          Terms of Use{' '}
-        </Text>{' '}
-        and{' '}
-        <Text style={styles.link} onPress={onPrivacyPolicyPressed}>
-          Privacy Policy{' '}
-        </Text>
-      </Text>
+          <Text style={styles.text}>
+            By Registering, you confirm that you accept our
+            <Text style={styles.link} onPress={onTermsOfUsePressed}>
+              {' '}
+              Terms of Use{' '}
+            </Text>{' '}
+            and{' '}
+            <Text style={styles.link} onPress={onPrivacyPolicyPressed}>
+              Privacy Policy{' '}
+            </Text>
+          </Text>
 
-      <CustomButton
-        text="Sign In with Google"
-        onPress={onSignInGoogle}
-        bgColor="#FAE9EA"
-        fgColor="#DD4D44"
-      />
+          <CustomButton
+            text="Sign In with Google"
+            onPress={onSignInGoogle}
+            bgColor="#FAE9EA"
+            fgColor="#DD4D44"
+          />
 
-      <CustomButton
-        text="Have an account? Sign In"
-        onPress={onSignInPress}
-        type="TERTIARY"
-      />
+          <CustomButton
+            text="Have an account? Sign In"
+            onPress={onSignInPress}
+            type="TERTIARY"
+          />
+        </View>
+      </View>
     </View>
   );
 };
@@ -144,8 +155,29 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     padding: 20,
+    marginTop: 100,
+    marginLeft: 30,
+    marginRight: 30,
+    backgroundColor: '#F6F1F1',
+    // borderWidth:2,
+  },
+  // linearGradient:{
+  //   borderRadius:20,
+  // },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  container1: {
+    height: hp('35%'),
+    backgroundColor: '#19376D',
+    // marginLeft:hp('10%'),
+    // overflow:'hidden',
+    borderBottomLeftRadius: hp('8%'),
+    borderBottomRightRadius: hp('8%'),
   },
   title: {
+    
     fontSize: 25,
     fontWeight: 'bold',
     color: '#051C60',
@@ -162,7 +194,7 @@ const styles = StyleSheet.create({
   label: {
     color: 'gray',
     fontSize: 15,
-    marginRight: 275,
+    marginRight: 220,
     marginTop: 10,
     marginBottom: 2,
   },
@@ -170,14 +202,14 @@ const styles = StyleSheet.create({
   confirmpasslabel: {
     color: 'gray',
     fontSize: 15,
-    marginRight: 280,
+    marginRight: 170,
     marginTop: 10,
     marginBottom: 2,
   },
   emaillabel: {
     color: 'gray',
     fontSize: 15,
-    marginRight: 294,
+    marginRight: 260,
     marginTop: 10,
     marginBottom: 2,
   },
